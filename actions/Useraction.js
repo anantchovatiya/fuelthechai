@@ -24,18 +24,28 @@ export const initiatePayment = async (amt, to_username, PaymentForm) => {
     return order;
 };
 
-export const fetchuser = async (username) => {
+export const fetchuser = async (us) => {
     await connectDB();
-    let user = await User.findOne({ username: username });
-    let u = user.toObject({flattenObjectIds: true});
+
+    // Find user by username
+    let user = await User.findOne({ username: us });
+
+    // Check if user is null or undefined
+    if (!user) {
+        throw new Error(`User with username ${us} not found`);
+    }
+
+    // Safely call .toObject() only if user is found
+    let u = user.toObject({ flattenObjectIds: true });
     return u;
-}
+};
+
 
 export const fetchpayments = async (username) => {
     await connectDB();
 
     let payments = await Payment.find({ to_user: username, done: true })
-        .sort({ amount: -1 }).limit(10)
+        .sort({ amount: -1 })
         .lean();
 
     // Transform the documents to plain objects

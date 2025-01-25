@@ -7,6 +7,7 @@ import User from "@/models/User";
 
 export const POST = async (req) => {
     await connectDB();
+
     let body = await req.formData();
 
     body = Object.fromEntries(body);
@@ -28,6 +29,6 @@ export const POST = async (req) => {
         if (!updatePayment) {
             return new Response("Payment not found", { status: 404 });
           }
-        return NextResponse.redirect(`http://localhost:3000/${p.to_user}?payment=success`);
+        return NextResponse.redirect(`${process.env.URI}/${p.to_user}?payment=success`);
     }
 }

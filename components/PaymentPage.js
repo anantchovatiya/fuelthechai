@@ -9,8 +9,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useSearchParams } from 'next/navigation';
 import { Bounce } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import Share from './Share/Share';
 
 export const PaymentPage =  ({username}) => {
+  let { data: session } = useSession();
   const searchParams = useSearchParams();
   const router = useRouter();
     const [currentuser, setcurrentuser] = useState({});
@@ -35,6 +37,7 @@ export const PaymentPage =  ({username}) => {
         getdata();
     },[]);
     const getdata = async () => {
+
       let u = await fetchuser(username);
 
       setcurrentuser(u);
@@ -61,7 +64,7 @@ export const PaymentPage =  ({username}) => {
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
             "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "callback_url": `http://localhost:3000/api/razorpay`, //Pass the same callback URL used in Step 1
+            "callback_url": `${process.env.URI}/api/razorpay`, //Pass the same callback URL used in Step 1
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
                 "name": "Gaurav Kumar", //your customer's name
                 "email": "gaurav.kumar@example.com",
@@ -96,6 +99,9 @@ pauseOnHover
 theme="light"
 transition={Bounce}
 />
+<div className="flex justify-center w-full items-center md:h-16 mb-3 bg-black text-white">
+<Share />
+</div>
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
 
@@ -104,13 +110,13 @@ transition={Bounce}
             <div className="cover w-full relative">
       <img
         className="object-cover h-64 md:h-80 w-full"
-        src={currentuser.coverPicture}
+        src={currentuser.coverPicture || null}
         alt=""
       />
       <div className="profile absolute -bottom-10 right-[41.5%] md:right-[47.4%]">
         <img
           className="w-20 rounded-full border-black border-2"
-          src={currentuser.profilePicture}
+          src={currentuser.profilePicture || null}
           alt=""
         />
       </div>
@@ -137,6 +143,7 @@ dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
           <ul className="pl-3 text-lg">
             {payments.length === 0 && <li>No payments yet</li>}
             {payments.map((p, i) => {
+              if(i<10){
               return <li key={i} className="my-3 flex gap-2 items-center">
                 <img
                   width={35}
@@ -146,7 +153,7 @@ dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
                 />
                 <p>{p.name} donated <span className='font-bold'>₹{p.amount}</span>  with a message "{p.message}"</p>
               </li>
-            })}
+            }})}
           </ul>
         </div>
         <div className="payment md:w-1/2 bg-slate-900 rounded-lg p-5">

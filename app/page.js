@@ -22,18 +22,18 @@ export default function Home() {
       <div className="flex gap-2 md:gap-5 justify-around text-center">
         <div className="items space-y-2 flex flex-col justify-center items-center">
           <img  className=" bg-white rounded-full p-3 h-16 md:h-20" src="./money.png" alt="" />
-          <p className="font-bold">Fund Yourself.</p>
-          <p>your fans are available to help you</p>
+          <p className="font-bold">Fund Yourself</p>
+          <p>Fans are ready to help you.</p>
         </div>
         <div className="items space-y-2 flex flex-col justify-center items-center">
           <img  className=" bg-white rounded-full p-3 h-16 md:h-20" src="./fund.png" alt="" />
-          <p className="font-bold">Fund Yourself.</p>
-          <p>your fans are available to help you</p>
+          <p className="font-bold">Fuel Your Fans</p>
+          <p>Your fans are ready to help you</p>
         </div>
         <div className="items space-y-2 flex flex-col justify-center items-center">
           <img  className=" bg-white rounded-full p-3 h-16 md:h-20" src="./people.png" alt="" />
-          <p className="font-bold">Fans.</p>
-          <p>your fans are available to help you</p>
+          <p className="font-bold">Dream</p>
+          <p>Together, we brew success.</p>
         </div>
       </div>
     </div>
@@ -64,5 +64,5 @@ Our platform offers a seamless way to support creators, customizable pages for s
   );
 }
 export const metadata = {
-  title: `GetMeAChai`,
+  title: `FueltheChai!`,
 }

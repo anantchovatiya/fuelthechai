@@ -21,7 +21,7 @@ function Dashboard() {
 
   const getdata = async () => {
     if (session?.user?.name) {
-      let data = await fetchuser(session.user.name);
+      let data = await fetchuser(session.user.email.split('@')[0]);
       setform(data);
     }
   };
@@ -77,7 +77,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='name'
                   onChange={handlechange}
-                  value={form.name}
+                  value={form.name || ""}
                 />
               </div>
 
@@ -90,7 +90,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='email'
                   onChange={handlechange}
-                  value={form.email}
+                  value={form.email || ""}
                 />
               </div>
 
@@ -103,7 +103,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='user'
                   onChange={handlechange}
-                  value={form.username}
+                  value={form.username || ""}
                 />
               </div>
 
@@ -116,7 +116,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='profilePicture'
                   onChange={handlechange}
-                  value={form.profilePicture}
+                  value={form.profilePicture || ""}
                 />
               </div>
 
@@ -129,7 +129,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='coverPicture'
                   onChange={handlechange}
-                  value={form.coverPicture}
+                  value={form.coverPicture || ""}
                 />
               </div>
 
@@ -142,7 +142,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='razorpayId'
                   onChange={handlechange}
-                  value={form.razorpayId}
+                  value={form.razorpayId ||  ""}
                 />
               </div>
 
@@ -155,7 +155,7 @@ function Dashboard() {
                   className="w-full p-3 border border-gray-700 bg-gray-900 rounded-lg text-sm"
                   name='razorpaySecret'
                   onChange={handlechange}
-                  value={form.razorpaySecret}
+                  value={form.razorpaySecret || ""}
                 />
               </div>
             </div>
