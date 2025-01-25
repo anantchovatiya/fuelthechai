@@ -9,8 +9,8 @@ export const authoptions =  NextAuth({
   providers: [
     // OAuth authentication providers...
     GithubProvider({
-      clientId: 'Ov23li0z90VssG3uRSfz',
-      clientSecret: 'c24be4122f7c0ac7a0dd12202b71ef63ee9e23dd'
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET
     }),
      GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,  // Use the client ID from .env.local
