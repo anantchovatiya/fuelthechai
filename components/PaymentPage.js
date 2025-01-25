@@ -60,15 +60,15 @@ export const PaymentPage =  ({username}) => {
             "key": currentuser.razorpayId, // Enter the Key ID generated from the Dashboard
             "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Get Me A Chai!", //your business name
+            "name": "Fuel the chai!", //your business name
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
             "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`, //Pass the same callback URL used in Step 1
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                "name": "Gaurav Kumar", //your customer's name
-                "email": "gaurav.kumar@example.com",
-                "contact": "9000090000" //Provide the customer's phone number for better conversion rates
+                "name": "Anant Chovatiya", //your customer's name
+                "email": "anantchovatiya@gmail.com",
+                "contact": "9428871141" //Provide the customer's phone number for better conversion rates
             },
             "notes": {
                 "address": "Razorpay Corporate Office"
