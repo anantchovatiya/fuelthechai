@@ -29,6 +29,6 @@ export const POST = async (req) => {
         if (!updatePayment) {
             return new Response("Payment not found", { status: 404 });
           }
-        return NextResponse.redirect(`${process.env.URI}/${p.to_user}?payment=success`);
+        return NextResponse.redirect(`${NEXT_PUBLIC_URL}/${p.to_user}?payment=success`);
     }
 }
