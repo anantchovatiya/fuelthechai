@@ -9,10 +9,9 @@ export default function Share() {
       try {
         await navigator.share({
           title: document.title, // Page title
-          text: "Check this out!",
+          text: "Fuel the chai by donating!",
           url: currentUrl, // Page URL
         });
-        console.log("Content shared successfully!");
       } catch (error) {
         console.error("Error sharing content:", error);
       }
